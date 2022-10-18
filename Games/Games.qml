@@ -817,6 +817,17 @@ FocusScope {
                     input_button: osdScheme[controlScheme].BTNSelect
                 }
 
+                Controls {
+                    id: button_L3
+
+                    message: dataText[lang].global_retroachievement
+
+                    text_color: colorScheme[theme].retroachievement
+                    front_color: colorScheme[theme].retroachievement.replace(/#/g, "#26");
+                    back_color: colorScheme[theme].retroachievement.replace(/#/g, "#26");
+                    input_button: osdScheme[controlScheme].BTNL3
+                }
+
             }
 
             Text {
@@ -882,5 +893,21 @@ FocusScope {
             return sortLabels[sortField];
         }
     }
+
+    //retroachievement connections
+    Connections {
+        target: game
+        function onRetroAchievementsInitialized() {
+            //console.log("GameView - retroAchievements is now initialized !");
+            setRetroAchievements();    
+        }
+    }
+    
+    //retroachievement update
+    function setRetroAchievements(){
+        if(game.retroAchievementsCount !== 0){
+               button5.visible = true;
+        }    
+   }
 
 }
