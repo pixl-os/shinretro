@@ -896,6 +896,7 @@ FocusScope {
         }
     }
 
+<<<<<<< HEAD
     function showPlatformName() {
         return (customCollection && systemName !== "") || 
                (currentCollection.shortName === "all") || 
@@ -903,6 +904,8 @@ FocusScope {
                (currentCollection.shortName === "lastplayed") ? true : false;
     }
 
+=======
+>>>>>>> retroachievement
     //retroachievement connections
     Connections {
         target: game
