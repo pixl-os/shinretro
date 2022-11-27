@@ -16,6 +16,7 @@ FocusScope {
     readonly property bool customCollection: customSystemLogoCategories.includes(collectionType)
     readonly property string systemName: (currentGame !== null && dataConsoles[currentGame.extra.system] !== undefined) ? dataConsoles[currentGame.extra.system].fullName : currentGame.collections.get(0).name
 
+    property bool readyForNeplay: isReadyForNetplay(game)
     property string clearedShortname: clearShortname(currentCollection.shortName)
     readonly property string alt_color2: (dataConsoles[clearedShortname] !== undefined) ? dataConsoles[clearedShortname].altColor2 : dataConsoles["default"].altColor2
 
@@ -88,6 +89,7 @@ FocusScope {
                 enabled: filter.withFavorite
             }
         ]
+        //fonction sorterBy
         sorters: [
             RoleSorter {
                 roleName: sortField
@@ -104,6 +106,82 @@ FocusScope {
             }
         ]
     }
+
+    /* //Netplay
+    function setRetroAchievements(){
+        if(game.retroAchievementsCount !== 0){
+            //to force update of GameAchievements model for gridView
+            achievements.model = game.retroAchievementsCount;
+            if (readyForNeplay){
+               button5.visible = true;
+               button6.visible = true;
+            }
+            else{
+                button5.visible = true;
+                button6.visible = false;
+
+            }
+        }
+        else
+        {
+            if (readyForNeplay) button5.visible = true;
+            else button5.visible = false;
+            button6.visible = false;
+            //hide retroachievements if displayed from a previous game
+            if(retroachievementsOpacity === 1) showDetails();
+        }
+    }
+     ObjectModel {
+        id: menuModel
+        Button {
+            id: button5
+            icon: readyForNeplay ? "../assets/images/multiplayer.svg" : "../assets/images/icon_cup.svg"
+            text: readyForNeplay ? qsTr("Netplay") + api.tr : ""
+            height: parent.height
+            selected: ListView.isCurrentItem && menu.focus && (root.embedded ? root.focus : true)
+            onHighlighted: { menu.currentIndex = ObjectModel.index; content.currentIndex = 0; }
+            visible: readyForNeplay || (!readyForNeplay && (game.retroAchievementsCount !== 0)) ? true : false
+            enabled : visible
+            onActivated:{
+                if (selected) {
+                    sfxToggle.play();
+                    if(readyForNeplay){
+                        //to force focus & reload dialog
+                        netplayRoomDialog.focus = false;
+                        netplayRoomDialog.active = false;
+                        netplayRoomDialog.game = game; //set game
+                        netplayRoomDialog.active = true;
+                        netplayRoomDialog.focus = true;
+                    }
+                    else if (game.retroAchievementsCount !== 0) showAchievements();
+                }
+                else {
+                    sfxNav.play();
+                    menu.currentIndex = ObjectModel.index;
+                }
+            }
+        }
+
+        Button {
+            id: button6
+            icon: "../assets/images/icon_cup.svg"
+            text: ""
+            height: parent.height
+            selected: ListView.isCurrentItem && menu.focus && (root.embedded ? root.focus : true)
+            onHighlighted: { menu.currentIndex = ObjectModel.index; content.currentIndex = 0; }
+            visible: ((game.retroAchievementsCount !== 0) && readyForNeplay) ? true : false
+            enabled : visible
+            onActivated:{
+                if (selected) {
+                    sfxToggle.play();
+                    if (game.retroAchievementsCount !== 0) showAchievements();
+                } else {
+                    sfxNav.play();
+                    menu.currentIndex = ObjectModel.index;
+                }
+            }
+        }
+     }*/
 
     Behavior on focus {
         ParallelAnimation {
@@ -807,8 +885,8 @@ FocusScope {
 
                     visible: currentGame !== null
                 }
-
-                Controls {
+                //fonction sorterBy
+                /*Controls {
                     id: button_Back
 
                     message: dataText[lang].games_sortedBy + " <b>" + getSortLabel() + "</b>";
@@ -816,6 +894,17 @@ FocusScope {
                     text_color: colorScheme[theme].sorters
                     front_color: colorScheme[theme].sorters.replace(/#/g, "#26");
                     back_color: colorScheme[theme].sorters.replace(/#/g, "#26");
+                    input_button: osdScheme[controlScheme].BTNSelect
+                }*/
+
+                Controls {
+                    id: button_Netplay
+
+                    message: dataText[lang].games_NetPlay + " <b>" + getSortLabel() + "</b>";
+
+                    text_color: colorScheme[theme].netplay
+                    front_color: colorScheme[theme].netplay.replace(/#/g, "#26");
+                    back_color: colorScheme[theme].netplay.replace(/#/g, "#26");
                     input_button: osdScheme[controlScheme].BTNSelect
                 }
 

@@ -151,7 +151,8 @@ FocusScope {
             cancel: "#E06C9A",
             details: "#F3C03B",
             filters: "#66D2EC",
-            sorters: "#8E63EC"
+            sorters: "#8E63EC",
+            netplay: "#8E63EC"
         },
          "Light": {
             main: "white",
@@ -174,7 +175,8 @@ FocusScope {
             cancel: "#E6140D",
             details: "#1C2C98",
             filters: "#996B00",
-            sorters: "#00991E"
+            sorters: "#00991E",
+            netplay: "#00991E"
         },
         "OzoneDark": {
             main: "#2D2D2D",
@@ -197,7 +199,8 @@ FocusScope {
             cancel: "#E6140D",
             details: "#00991E",
             filters: "#5365DF",
-            sorters: "#F3C03B"
+            sorters: "#F3C03B",
+            netplay: "#F3C03B"
         },
         "SteamOS": {
             main: "black",
@@ -220,7 +223,8 @@ FocusScope {
             cancel: "#EBEBEB",
             details: "#EBEBEB",
             filters: "#EBEBEB",
-            sorters: "#EBEBEB"
+            sorters: "#EBEBEB",
+            netplay: "#EBEBEB",
         }
     }
 
@@ -238,6 +242,7 @@ FocusScope {
             global_yes: "Yes",
             global_no: "No",
             global_back: "GO <b>BACK</b>",
+            global_netplay: "<b>Netplay</b>",
             global_select: "OK",
             global_games: "GAMES",
             global_noFavorites: "No favorites set",
@@ -264,6 +269,7 @@ FocusScope {
             games_filterMultiplayer: "Multiplayer",
             games_filter: "FILTERS",
             games_sortedBy: "SORTED BY",
+            games_NetPlay: "NetPlay",
             home_continue: "Continue playing",
             home_favorites: "Favorites",
             home_play: "Play",
@@ -313,6 +319,7 @@ FocusScope {
             global_yes: "是",
             global_no: "否",
             global_back: "取消<b>返回</b>",
+            global_netplay: "<b>Netplay</b>",
             global_select: "确认",
             global_games: "游戏",
             global_noFavorites: "没有收藏游戏",
@@ -339,6 +346,7 @@ FocusScope {
             games_filterMultiplayer: "多人游戏",
             games_filter: "搜索",
             games_sortedBy: "排序",
+            games_NetPlay: "NetPlay",
             home_continue: "近期游戏",
             home_favorites: "收藏",
             home_play: "开始游玩",
@@ -388,6 +396,7 @@ FocusScope {
             global_yes: "Ja",
             global_no: "Nein",
             global_back: "<b>ZURÜCK</b>",
+            global_netplay: "<b>Netplay</b>",
             global_select: "OK",
             global_games: "SPIELE",
             global_noFavorites: "Keine Favoriten gesetzt",
@@ -414,6 +423,7 @@ FocusScope {
             games_filterMultiplayer: "Mehrspieler",
             games_filter: "FILTER",
             games_sortedBy: "SORTIERT NACH",
+            games_NetPlay: "NetPlay",
             home_continue: "Weiterspielen",
             home_favorites: "Favoriten",
             home_play: "Spiele",
@@ -463,6 +473,7 @@ FocusScope {
             global_yes: "Oui",
             global_no: "Non",
             global_back: "<b>RETOUR</b>",
+            global_netplay: "<b>Netplay</b>",
             global_select: "OK",
             global_games: "JEUX",
             global_noFavorites: "Aucun jeu en favoris",
@@ -489,6 +500,7 @@ FocusScope {
             games_filterMultiplayer: "Multijoueur",
             games_filter: "FILTRES",
             games_sortedBy: "TRIÉ PAR",
+            games_NetPlay: "NetPlay",
             home_continue: "Joué récemment",
             home_favorites: "Favoris",
             home_play: "Jouer",
@@ -538,6 +550,7 @@ FocusScope {
             global_yes: "Sim",
             global_no: "Não",
             global_back: "<b>VOLTAR</b>",
+            global_netplay: "<b>Netplay</b>",
             global_select: "OK",
             global_games: "JOGOS",
             global_noFavorites: "Nenhum favorito definido",
@@ -564,6 +577,7 @@ FocusScope {
             games_filtered: "<b>FILTROS</b>",
             games_filterMultiplayer: "Multijogador",
             games_sortedBy: "ORDENADO POR",
+            games_NetPlay: "NetPlay",
             home_continue: "Continuar jogando",
             home_favorites: "Favoritos",
             home_play: "Jogar",
