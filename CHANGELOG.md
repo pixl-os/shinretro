@@ -1,8 +1,19 @@
 # Changelog
 ## [pixL-master] - 202a-mm-dd - v0.20x.x
 
+ - in settings General Logo variation add (steel, carbon)
+ - in collections page add other logo (steel,carbon) for system
+ - in games page add other logo (steel,carbon) for system
+
+## [pixL-master] - 2023-02-12 - v0.201.2
+
  - in home page add other media (fanart,box)
  - in game page add other media (fanart)
+ - Fix menuColor typo in #83
+ - Few bug fixes #85
+   - Fix for #79 (Filters now work in Last Played and Favorites collections).
+   - Fixed variable name that fixes the "Precomposed Image Type" setting label showing up as Undefined for English lang.
+   - Disabled custom sorting for the last played and favorites collections as it currently won't work for those 2 special collections without implementing a different approach to checking for the tags.
 
 ## [pixL-master] - 2022-11-16 - v0.201.1
 
