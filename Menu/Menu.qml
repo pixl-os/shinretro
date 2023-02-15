@@ -181,7 +181,7 @@ FocusScope {
                                     easing.type: Easing.OutExpo
                                 }
                             }
-                            visible: logoVariant === "color"
+                            //visible: logoVariant === "color"
                             antialiasing: true
                         }
                         Image {
@@ -210,7 +210,7 @@ FocusScope {
                                     easing.type: Easing.OutExpo
                                 }
                             }
-                            visible: logoVariant === "color" && img_helper_collection_region.status == Image.Error
+                            visible: img_helper_collection_region.status == Image.Error
                             antialiasing: true
                         }
 
@@ -218,7 +218,7 @@ FocusScope {
                             anchors.fill: (img_helper_collection_region.status == Image.Error) ? img_helper_collection : img_helper_collection_region
                             source: (img_helper_collection_region.status == Image.Error) ? img_helper_collection : img_helper_collection_region
                             color: colorScheme[theme].icons
-                            visible: logoVariant !== "color"
+                            visible: logoVariant === "mono"
                             antialiasing: true
                         }
                     }

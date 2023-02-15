@@ -48,7 +48,8 @@ Item {
                     source: "../assets/collections/" + clearedShortname + "/logo_" + region + "_" + logoVariant
                     verticalAlignment: Image.AlignBottom
                     fillMode: Image.PreserveAspectFit
-                    visible: logoVariant === "color"
+                    //now to support regions for all types
+                    //visible: logoVariant == "color"
                     antialiasing: true
                 }
                 Image {
@@ -58,14 +59,15 @@ Item {
                     source: "../assets/collections/" + clearedShortname + "/logo_" + logoVariant
                     verticalAlignment: Image.AlignBottom
                     fillMode: Image.PreserveAspectFit
-                    visible: logoVariant === "color" && img_logo_region.status == Image.Error
+                    visible: img_logo_region.status == Image.Error
                     antialiasing: true
                 }
                 ColorOverlay {
                     anchors.fill: (img_logo_region.status == Image.Error) ? img_logo : img_logo_region
                     source: (img_logo_region.status == Image.Error) ? img_logo : img_logo_region
                     color: colorScheme[theme].icons
-                    visible: logoVariant !== "color"
+                    //to have overlay only for mono
+                    visible: logoVariant === "mono"
                     antialiasing: true
                 }
             }
@@ -84,7 +86,8 @@ Item {
                 }
                 wrapMode: Text.Wrap
                 horizontalAlignment: Text.AlignHCenter
-                visible: img_logo.status === Image.Error
+                //to display text only if errors to display both
+                visible: img_logo.status === Image.Error && img_logo_region.status == Image.Error
             }
 
             Text {
