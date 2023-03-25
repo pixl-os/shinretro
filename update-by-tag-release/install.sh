@@ -8,7 +8,7 @@ helpFunction()
 	echo "-e Information about the component of the version already installed as '0.0.1'"
 	echo "-n Information about the component of the version already installed as '0.0.2'"
 	echo "-c name of the component as know by Pegasus"
-	echo "-o Information about the old component of the already installed version as '0.0.3'"
+	#echo "-o Information about the old component of the already installed version as '0.0.3'"
 	exit 1 # Exit script after printing help
 }
 
@@ -17,7 +17,7 @@ while getopts ":e:n:c:o:?" opt; do
 		e ) existingVersion=${OPTARG} ;;
 		n ) newVersion="$OPTARG" ;;
 		c ) componentName="$OPTARG" ;;
-		o ) oldVersion="$OPTARG" ;;
+		#o ) oldVersion="$OPTARG" ;;
 		? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
 	esac
 done
@@ -37,7 +37,7 @@ echo "0" > /tmp/$componentName/install.err
 mount -o remount,rw /
 
 # Print helpFunction in case parameters are empty
-if [ -z "$existingVersion" ] || [ -z "$newVersion" ] || [ -z "$componentName" ] || [ -z "$oldVersion" ]
+if [ -z "$existingVersion" ] || [ -z "$newVersion" ] || [ -z "$componentName" ] #|| [ -z "$oldVersion" ]
 then
 	echo "Some or all of the parameters are empty" > /tmp/$componentName/install.log
 	echo "1" > /tmp/$componentName/install.err
