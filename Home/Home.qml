@@ -387,6 +387,15 @@ FocusScope {
             back_color: "transparent"
             input_button: osdScheme[controlScheme].BTND
         }
+
+        Controls {
+             id: button_Back
+             message: "<b>"+dataText[lang].select_netplay+"</b>"
+             text_color: colorScheme[theme].text
+             front_color: "transparent"
+             back_color: "transparent"
+             input_button: osdScheme[controlScheme].BTNSelect
+        }
     }
 
 }

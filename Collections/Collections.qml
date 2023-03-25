@@ -298,6 +298,14 @@ FocusScope {
             back_color: colorScheme[theme].cancel.replace(/#/g, "#26");
             input_button: osdScheme[controlScheme].BTNR
         }
+        Controls {
+            id: button_Back
+            message: "<b>"+dataText[lang].select_netplay+"</b>"
+            text_color: colorScheme[theme].sorters
+            front_color: colorScheme[theme].sorters.replace(/#/g, "#26");
+            back_color: colorScheme[theme].sorters.replace(/#/g, "#26");
+            input_button: osdScheme[controlScheme].BTNSelect
+        }
     }
 
 }
