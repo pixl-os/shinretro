@@ -253,6 +253,7 @@ FocusScope {
             collectionDetails_gamesAvailable: "games available",
             games_na: "N/A",
             games_developedBy: "Developed by",
+            games_developedIn: "in",
             games_for: "for",
             games_players: "PLAYERS",
             games_player: "1 PLAYER",
@@ -264,6 +265,8 @@ FocusScope {
             games_addFavorite: "ADD <b>FAVORITE</b>",
             games_filtered: "<b>FILTERS</b>",
             games_filterMultiplayer: "Multiplayer",
+            games_filterDate: "Sorted By Date",
+            games_filterName: "Name",
             games_filter: "FILTERS",
             games_sortedBy: "SORTED BY",
             home_continue: "Continue playing",
@@ -330,6 +333,7 @@ FocusScope {
             collectionDetails_gamesAvailable: "游戏可用",
             games_na: "N/A",
             games_developedBy: "开发由",
+            games_developedIn: "年",
             games_for: "for",
             games_players: "PLAYERS",
             games_player: "1 PLAYER",
@@ -341,6 +345,8 @@ FocusScope {
             games_addFavorite: "添加 <b>收藏</b>",
             games_filtered: "<b>搜索</b>",
             games_filterMultiplayer: "多人游戏",
+            games_filterDate: "排序 日期",
+            games_filterName: "姓名",
             games_filter: "搜索",
             games_sortedBy: "排序",
             home_continue: "近期游戏",
@@ -407,6 +413,7 @@ FocusScope {
             collectionDetails_gamesAvailable: "Spiele verfügbar",
             games_na: "K.A.",
             games_developedBy: "Entwickelt von",
+            games_developedIn: "in",
             games_for: "für",
             games_players: "SPIELER",
             games_player: "1 SPIELER",
@@ -418,6 +425,8 @@ FocusScope {
             games_addFavorite: "<b>FAVORIT</b> hinzufügen",
             games_filtered: "<b>FILTER</b>",
             games_filterMultiplayer: "Mehrspieler",
+            games_filterDate: "Sortiert Nach Datum",
+            games_filterName: "Name",
             games_filter: "FILTER",
             games_sortedBy: "SORTIERT NACH",
             home_continue: "Weiterspielen",
@@ -484,6 +493,7 @@ FocusScope {
             collectionDetails_gamesAvailable: "Jeux disponibles",
             games_na: "NC",
             games_developedBy: "Developpé par",
+            games_developedIn: "en",
             games_for: "pour",
             games_players: "JOUEURS",
             games_player: "1 JOUEUR",
@@ -495,6 +505,8 @@ FocusScope {
             games_addFavorite: "AJOUTER AUX <b>FAVORIS</b>",
             games_filtered: "<b>FILTRES</b>",
             games_filterMultiplayer: "Multijoueur",
+            games_filterDate: "Trié Par Date",
+            games_filterName: "Nom",
             games_filter: "FILTRES",
             games_sortedBy: "TRIÉ PAR",
             home_continue: "Joué récemment",
@@ -562,6 +574,7 @@ FocusScope {
             collectionDetails_gamesAvailable: "Jogos disponíveis",
             games_na: "N/A",
             games_developedBy: "Desenvolvido por",
+            games_developedIn: "em",
             games_for: "por",
             games_players: "JOGADORES",
             games_player: "1 JOGADOR",
@@ -573,6 +586,8 @@ FocusScope {
             games_addFavorite: "ADICIONAR <b>FAVORITO</b>",
             games_filtered: "<b>FILTROS</b>",
             games_filterMultiplayer: "Multijogador",
+            games_filterDate: "Ordenado Por Data",
+            games_filterName: "Nome",
             games_sortedBy: "ORDENADO POR",
             home_continue: "Continuar jogando",
             home_favorites: "Favoritos",
@@ -1391,11 +1406,13 @@ FocusScope {
     }
 
     function getSortIndex() {
+        //console.log(clearedShortname + '-sortIndex : ', api.memory.get(clearedShortname + '-sortIndex'));
         return api.memory.get(clearedShortname + '-sortIndex') || 0;
     }
 
     function saveSortIndex(sortIndex) {
         if (sortIndex !== undefined) {
+            //console.log(clearedShortname + '-sortIndex saved with : ', sortIndex);
             api.memory.set(clearedShortname + '-sortIndex', sortIndex);
         }
     }

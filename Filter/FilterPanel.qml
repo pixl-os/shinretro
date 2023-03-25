@@ -7,6 +7,7 @@ FocusScope {
     property alias withTitle: itemTitle.text
     property alias withMultiplayer: itemMultiplayer.checked
     property alias withFavorite: itemFavorite.checked
+    property alias withDate: itemDate.checked
     property alias panelColor: panel.color
     property color textColor: colorScheme[theme].filters
 
@@ -58,6 +59,29 @@ FocusScope {
             text: dataText[lang].games_filterMultiplayer
             textColor: root.textColor
             fontSize: vpx(20 * fontScalingFactor)
+        
+            KeyNavigation.down: itemDate
+        }
+
+        CheckBox {
+            id: itemDate
+            text: dataText[lang].games_filterDate
+            textColor: root.textColor
+            fontSize: vpx(20 * fontScalingFactor)
+            checked: getSortIndex() === 1 ? true : false
+            onCheckedChanged: {
+                //simple solution to use sorting in filter panel
+                if(itemDate.checked === true){
+                    sortIndex = 1;
+                    saveSortIndex(1); //sorting by release date
+                }
+                else{
+                    sortIndex = 0;
+                    saveSortIndex(0); //sorting by name
+                }
+
+            }
+
         }
     }
 

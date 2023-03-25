@@ -321,6 +321,27 @@ FocusScope {
                                 }
 
                                 Text {
+                                    text: dataText[lang].games_developedIn
+                                    font {
+                                        family: global.fonts.sans
+                                        weight: Font.Light
+                                        italic: true
+                                        pixelSize: vpx(14 * fontScalingFactor)
+                                    }
+                                    color: text_color
+                                }
+
+                                Text {
+                                    text: currentGame.releaseYear
+                                    font {
+                                        family: global.fonts.sans
+                                        weight: Font.Medium
+                                        pixelSize: vpx(14 * fontScalingFactor)
+                                    }
+                                    color: text_color
+                                }
+
+                                Text {
                                     text: dataText[lang].games_for
                                     font {
                                         family: global.fonts.sans
@@ -685,15 +706,6 @@ FocusScope {
                         }
                     }
 
-                    // Select button triggers sort by category - not sure what enum matches so just using the INT value for the key
-                    if (event.key == 1048586) {
-                        event.accepted = true;
-                        playBackSound();
-                        sortIndex = (sortIndex + 1) % sortFields.length;
-                        saveSortIndex(sortIndex);
-                        return;
-                    }
-
                     if (event.key == Qt.Key_Left) {
                         playNavSound();
                     }
@@ -854,17 +866,6 @@ FocusScope {
                     input_button: osdScheme[controlScheme].BTNL
 
                     visible: currentGame !== null
-                }
-
-                Controls {
-                    id: button_Back
-
-                    message: dataText[lang].games_sortedBy + " <b>" + getSortLabel() + "</b>";
-
-                    text_color: colorScheme[theme].sorters
-                    front_color: colorScheme[theme].sorters.replace(/#/g, "#26");
-                    back_color: colorScheme[theme].sorters.replace(/#/g, "#26");
-                    input_button: osdScheme[controlScheme].BTNSelect
                 }
 
             }
