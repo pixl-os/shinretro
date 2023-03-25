@@ -3,6 +3,14 @@
 
  - 
 
+## [pixL-master] - 2023-03-22 - v0.201.3
+
+ - In Games page add date of game
+ - Remove Keys.onPressed event action for SELECT button
+ - Remove order by 'Title', 'Release Date', 'Rating', 'Genre', 'Last Played', 'Favorite'
+ - Move order by 'Release Date' to Filter function
+
+
 ## [pixL-master] - 2023-02-15 - v0.201.2
 
  - in home page add other media (fanart,box)

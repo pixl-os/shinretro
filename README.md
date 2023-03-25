@@ -2,7 +2,7 @@
 
 # shinretro
 
-Current Version pixL-master: [0.201.2](CHANGELOG.md)
+Current Version pixL-master: [0.201.3](CHANGELOG.md)
 
 Current Version master: [0.201](CHANGELOG.md) [![GPLv3 license](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 

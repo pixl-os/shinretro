@@ -4,18 +4,20 @@
 
 helpFunction()
 {
-	echo "Usage: $0 -e existingVersion -n newVersion -c componentName"
-	echo "-e Version of the existing installed version as '0.0.1'"
-	echo "-n Version of the existing installed version as '0.0.2'"
+	echo "Usage: $0 -e existingVersion -n newVersion -c componentName -o oldVersion"
+	echo "-e Information about the component of the version already installed as '0.0.1'"
+	echo "-n Information about the component of the version already installed as '0.0.2'"
 	echo "-c name of the component as know by Pegasus"
+	echo "-o Information about the old component of the already installed version as '0.0.3'"
 	exit 1 # Exit script after printing help
 }
 
-while getopts ":e:n:c:?" opt; do
+while getopts ":e:n:c:o:?" opt; do
 	case "$opt" in
 		e ) existingVersion=${OPTARG} ;;
 		n ) newVersion="$OPTARG" ;;
 		c ) componentName="$OPTARG" ;;
+		o ) oldVersion="$OPTARG" ;;
 		? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
 	esac
 done
@@ -24,6 +26,7 @@ done
 #echo "$existingVersion"
 #echo "$newVersion"
 #echo "$componentName"
+#echo "$oldVersion"
 
 # Initialization of progress and state
 echo "0.1" > /tmp/$componentName/progress.log
@@ -34,7 +37,7 @@ echo "0" > /tmp/$componentName/install.err
 mount -o remount,rw /
 
 # Print helpFunction in case parameters are empty
-if [ -z "$existingVersion" ] || [ -z "$newVersion" ] || [ -z "$componentName" ]
+if [ -z "$existingVersion" ] || [ -z "$newVersion" ] || [ -z "$componentName" ] || [ -z "$oldVersion" ]
 then
 	echo "Some or all of the parameters are empty" > /tmp/$componentName/install.log
 	echo "1" > /tmp/$componentName/install.err
@@ -76,6 +79,14 @@ then
 	fi
 	# Do backup of previous version
 	#***************************************begin of part to customize*****************************************************
+	#####echo "Old Version" > /tmp/$componentName/install.log
+	#####echo "shinretro"$oldVersion"" > /tmp/$componentName/install.log
+	#####rm -r /recalbox/share_init/themes/shinretro$oldVersion
+	
+	rm -r /recalbox/share_init/themes/shinretro0.201
+	rm -r /recalbox/share_init/themes/shinretro0.201.1
+	rm -r /recalbox/share_init/themes/shinretro0.201.2
+	
 	mv /recalbox/share_init/themes/shinretro /recalbox/share_init/themes/shinretro$existingVersion
 	mv /recalbox/share_init/themes/shinretro$existingVersion/theme.cfg /recalbox/share_init/themes/shinretro$existingVersion/theme.cfg$existingVersion
 	if [ $? -eq 0 ]
