@@ -846,8 +846,8 @@ FocusScope {
 
                     message: {
                         if (games.state === "filtered")
-                            return dataText[lang].games_filtered 
-                        return dataText[lang].games_filter
+                            return "<b>"+dataText[lang].games_filtered+"</b>"
+                        return "<b>"+dataText[lang].games_filter+"</b>"
                     }
                     text_color: colorScheme[theme].filters
                     front_color: colorScheme[theme].filters.replace(/#/g, "#26");
@@ -866,6 +866,15 @@ FocusScope {
                     input_button: osdScheme[controlScheme].BTNL
 
                     visible: currentGame !== null
+                }
+
+                Controls {
+                    id: button_Back
+                    message: "<b>"+dataText[lang].select_netplay+"</b>"
+                    text_color: colorScheme[theme].sorters
+                    front_color: colorScheme[theme].sorters.replace(/#/g, "#26");
+                    back_color: colorScheme[theme].sorters.replace(/#/g, "#26");
+                    input_button: osdScheme[controlScheme].BTNSelect
                 }
 
             }
