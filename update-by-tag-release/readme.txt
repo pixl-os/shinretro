@@ -9,6 +9,7 @@ Start
 7. clic right in the tag
 8. push vx.xxx.x to origin
 9. in your pc zip the folder "shinretro"
+9.1 change name shinretro.zip to package.zip
 10. go to https://github.com/pixl-os/shinretro/releases/new
 11. choose a tag create in step 3
 12. clic on "Generate release notes"
