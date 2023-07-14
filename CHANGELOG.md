@@ -1,7 +1,9 @@
 # Changelog
 ## [pixL-master] - 202a-mm-dd - v0.201.x
 
-- 
+- logo:
+    - Add new logos for system wiiu
+    - Add new logos for system model2
 
 ## [pixL-master] - 2023-04-10 - v0.201.4
 
