@@ -1,5 +1,5 @@
 #!/bin/bash
-# version: 0.201.4
+# version: 0.201.6
 themeName="shinretro"
 #echo for debug
 #echo "$themeName"

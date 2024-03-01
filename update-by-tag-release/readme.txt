@@ -1,7 +1,8 @@
 Start
 1. update number version in theme.cfg and readme.md and changelog.md and folder "update-by-tag-release" version.sh
-2. in folder "update-by-tag-release" under line "rm /recalbox/share_init/themes/shinretro(version)" version = old number
+2. in folder "update-by-tag-release" into file "install.sh" under line "rm /recalbox/share_init/themes/shinretro(version)" version = old number
 2.1 add line "rm /recalbox/share_init/themes/shinretro(newversion)" newversion = last number
+2.2 in folder "update-by-tag-release" into file "version.sh" change # version: (number) by the last
 3. in gitkraken
 4. clic right in branch pixL-master "create tag here"
 5. name tag whith the last version check changelog.md

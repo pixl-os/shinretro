@@ -83,11 +83,11 @@ then
 	#####echo "shinretro"$oldVersion"" > /tmp/$componentName/install.log
 	#####rm -r /recalbox/share_init/themes/shinretro$oldVersion
 	
-	#rm -r /recalbox/share_init/themes/shinretro0.201
-	#rm -r /recalbox/share_init/themes/shinretro0.201.1
-	#rm -r /recalbox/share_init/themes/shinretro0.201.2
-	#rm -r /recalbox/share_init/themes/shinretro0.201.3
-	#rm -r /recalbox/share_init/themes/shinretro0.201.4
+	rm -r /recalbox/share_init/themes/shinretro0.201
+	rm -r /recalbox/share_init/themes/shinretro0.201.1
+	rm -r /recalbox/share_init/themes/shinretro0.201.2
+	rm -r /recalbox/share_init/themes/shinretro0.201.3
+	rm -r /recalbox/share_init/themes/shinretro0.201.4
 	rm -r /recalbox/share/saves/themes/shinretro
 	
 	#mv /recalbox/share_init/themes/shinretro /recalbox/share_init/themes/shinretro$existingVersion
