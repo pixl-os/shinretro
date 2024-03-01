@@ -1,6 +1,15 @@
 # Changelog
 ## [pixL-master] - 202a-mm-dd - v0.201.x
 
+## [pixL-master] - 2024-01-14 - v0.201.6
+
+- logo:
+    - Add new logos for system PS3
+    - Add new logos for system sys2x6
+    - Add new logos for system namco357
+
+## [pixL-master] - 2023-06-22 - v0.201.5
+
 - logo:
     - Add new logos for system wiiu
     - Add new logos for system model2
