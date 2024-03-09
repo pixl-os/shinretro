@@ -90,10 +90,10 @@ then
 	rm -r /recalbox/share_init/themes/shinretro0.201.4
 	rm -r /recalbox/share/saves/themes/shinretro
 	
-	#mv /recalbox/share_init/themes/shinretro /recalbox/share_init/themes/shinretro$existingVersion
-	mv /recalbox/share_init/themes/shinretro /recalbox/share/saves/themes/shinretro/shinretro$existingVersion
-	#mv /recalbox/share_init/themes/shinretro$existingVersion/theme.cfg /recalbox/share_init/themes/shinretro$existingVersion/theme.cfg$existingVersion
-	mv /recalbox/share/saves/themes/shinretro/shinretro$existingVersion/theme.cfg /recalbox/share/saves/themes/shinretro/shinretro$existingVersion/theme.cfg$existingVersion
+	mv /recalbox/share_init/themes/shinretro /recalbox/share_init/themes/shinretro$existingVersion
+	#mv /recalbox/share_init/themes/shinretro /recalbox/share/saves/themes/shinretro/shinretro$existingVersion
+	mv /recalbox/share_init/themes/shinretro$existingVersion/theme.cfg /recalbox/share_init/themes/shinretro$existingVersion/theme.cfg$existingVersion
+	#mv /recalbox/share/saves/themes/shinretro/shinretro$existingVersion/theme.cfg /recalbox/share/saves/themes/shinretro/shinretro$existingVersion/theme.cfg$existingVersion
 	if [ $? -eq 0 ]
 	then
 		echo "0.6" > /tmp/$componentName/progress.log
