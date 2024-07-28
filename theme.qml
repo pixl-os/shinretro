@@ -1050,7 +1050,6 @@ FocusScope {
         "steam":              { manufacturer: "valve",         release: null,   color: "#010314", altColor: "#030730", altColor2: "#112a40", fullName: "Steam"  },
         "sufami":             { manufacturer: "bandai",        release: "1996", color: "#FF0000", altColor: "#CC0000", altColor2: "#1E2881", fullName: "SuFami Turbo"  },
         "supergrafx":         { manufacturer: "nec",           release: "1989", color: "#0091AD", altColor: "#006A80", altColor2: "#000000", fullName: "SuperGrafx"  },
-        "switch":             { manufacturer: "nintendo",      release: "2017", color: "#232323", altColor: "#0D0D0D", altColor2: "#FE0016", fullName: "Nintendo Switch"  },
         "ti99":               { manufacturer: "ti",            release: "1979", color: "#484141", altColor: "#363030", altColor2: "#000000", fullName: "TI-99"  },
         "tic80":              { manufacturer: "vadimGrigoruk", release: "2017", color: "#4E76B4", altColor: "#456AA1", altColor2: "#65A33D", fullName: "TIC-80"  },
         "triforce":           { manufacturer: "sega",          release: "2002", color: "#5d4472", altColor: "#413050", altColor2: "#352bc0", fullName: "Triforce Arcade"  },

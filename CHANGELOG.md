@@ -1,5 +1,6 @@
 # Changelog
 ## [pixL-master] - 202a-mm-dd - v0.201.x
+- Remove console switch
 
 ## [pixL-master] - 2024-01-14 - v0.201.6
 
