@@ -49,4 +49,9 @@ Row {
         }
     }
 
+    TapHandler {
+		onTapped: {
+			checked = !checked;
+		}
+	}
 }

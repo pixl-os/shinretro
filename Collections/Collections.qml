@@ -102,10 +102,11 @@ FocusScope {
             focus: collections.focus
             model: allCollections
             currentIndex: currentCollectionIndex
+            onCurrentIndexChanged: currentCollectionIndex = currentIndex
             delegate: CollectionsItems {}
             snapMode: PathView.SnapOneItem
             highlightMoveDuration: 100
-            highlightRangeMode: PathView.ApplyRange
+            highlightRangeMode: PathView.StrictlyEnforceRange
 
             pathItemCount: 10
             path: Path {
@@ -144,6 +145,24 @@ FocusScope {
 
             preferredHighlightBegin: 0.32
             preferredHighlightEnd: preferredHighlightBegin
+
+            Item {
+				width: baseItemWidth * 2
+				height: pv_collections.height * 1.17
+				
+				anchors.left: parent.left
+				anchors.leftMargin: baseItemWidth * 1.45
+				anchors.top: parent.top
+				anchors.topMargin: pv_collections.height * -0.085
+				
+				MouseArea {
+				anchors.fill: parent;
+				onClicked: {
+					playAcceptSound();
+					currentMenuIndex = 3;
+					}
+				}
+			}
 
             Keys.onPressed: {
                 if (api.keys.isAccept(event) && !event.isAutoRepeat) {
@@ -274,6 +293,12 @@ FocusScope {
             front_color: colorScheme[theme].accepted.replace(/#/g, "#33");
             back_color: colorScheme[theme].accepted.replace(/#/g, "#33");
             input_button: osdScheme[controlScheme].BTND
+	    TapHandler {
+		onTapped: {
+			playAcceptSound();
+                    	currentMenuIndex = 3;
+		}
+	    }
         }
 
         Controls {
@@ -286,6 +311,17 @@ FocusScope {
             back_color: colorScheme[theme].filters.replace(/#/g, "#26");
             input_button: osdScheme[controlScheme].BTNU
             visible: collectionTypes.length > 1
+	    TapHandler {
+		onTapped: {
+			if (collectionTypes.length > 1) {
+				var index = collectionTypes.indexOf(collectionType) + 1;
+				currentCollectionIndex = 0;
+				collectionType = (index < collectionTypes.length) ? collectionTypes[index] : collectionTypes[0];
+				currentCollectionIndex = api.memory.get("currentCollectionIndex-" + collectionType) || 0;
+				games.currentGameIndex = 0;
+			}
+		}
+	    }
         }
 
         Controls {
@@ -297,7 +333,8 @@ FocusScope {
             front_color: colorScheme[theme].cancel.replace(/#/g, "#26");
             back_color: colorScheme[theme].cancel.replace(/#/g, "#26");
             input_button: osdScheme[controlScheme].BTNR
-        }
+	            }
+                
         Controls {
             id: button_Back
             message: "<b>"+dataText[lang].select_netplay+"</b>"
@@ -305,6 +342,13 @@ FocusScope {
             front_color: colorScheme[theme].sorters.replace(/#/g, "#26");
             back_color: colorScheme[theme].sorters.replace(/#/g, "#26");
             input_button: osdScheme[controlScheme].BTNSelect
+        
+        TapHandler {
+		onTapped: {
+			playBackSound();
+                    	currentMenuIndex = 1;
+		}
+	    }
         }
     }
 
