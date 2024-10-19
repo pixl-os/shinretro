@@ -154,6 +154,19 @@ FocusScope {
                 focus: false
                 onFocusChanged: { if(focus) previousLastplayed = lastplayed_left }
 
+                MouseArea {
+			anchors.fill: parent
+			onClicked: {
+				if (lastplayed_left.focus) {
+					playPlaySound();
+					api.memory.set("currentMenuIndex", currentMenuIndex);
+					currentGame.launch();}
+				else
+					playNavSound();
+					lastplayed_left.focus = true
+			}
+		}
+
                 Keys.onPressed: {
                     if (event.isAutoRepeat) {
                         return;
@@ -210,6 +223,20 @@ FocusScope {
                         }
                         visible: status == Loader.Ready
                     }
+
+			MouseArea {
+				anchors.fill: parent
+				onClicked: {
+					if (lastplayed_right.focus && isSelected) {
+						playPlaySound();
+						api.memory.set("currentMenuIndex", currentMenuIndex);
+						currentGame.launch();}
+					else
+						playNavSound();
+						lastplayed_right.focus = true
+						lastplayed_right.currentIndex = index;
+				}
+			}
                 }
                 highlightMoveDuration: vpx(150)
                 focus: false
@@ -328,6 +355,20 @@ FocusScope {
                     }
                     visible: status === Loader.Ready
                 }
+
+                MouseArea {
+			anchors.fill: parent
+			onClicked: {
+				if (favorites.focus && isSelected) {
+					playPlaySound();
+					api.memory.set("currentMenuIndex", currentMenuIndex);
+					currentGame.launch();}
+				else
+					playNavSound();
+					favorites.focus = true
+					favorites.currentIndex = index;
+			}
+		}
             }
 
             clip: currentFavoritesIndex == 0 || currentFavoritesIndex == maximumFavoritesShown ? false : true
@@ -386,8 +427,7 @@ FocusScope {
             front_color: "transparent"
             back_color: "transparent"
             input_button: osdScheme[controlScheme].BTND
-        }
-
+                }
         Controls {
              id: button_Back
              message: "<b>"+dataText[lang].select_netplay+"</b>"
@@ -395,6 +435,14 @@ FocusScope {
              front_color: "transparent"
              back_color: "transparent"
              input_button: osdScheme[controlScheme].BTNSelect
+
+            TapHandler {
+		onTapped: {
+			playPlaySound();
+                    	api.memory.set("currentMenuIndex", currentMenuIndex);
+                    	currentGame.launch();
+		}
+	    }
         }
     }
 

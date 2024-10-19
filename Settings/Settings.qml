@@ -194,6 +194,15 @@ FocusScope {
                 width: ListView.view.width
                 height: itemheight
 
+                MouseArea {
+			anchors.fill: parent
+			onClicked: {
+				playNavSound();
+				pagelist.currentIndex = index;
+				pagelist.focus = true; 
+			}
+		}
+
                 // Page name
                 Text {
                     id: pageNameText
@@ -259,6 +268,9 @@ FocusScope {
         spacing: vpx(0)
         orientation: ListView.Vertical
 
+        currentIndex: currentSettingsIndex
+        onCurrentIndexChanged: currentSettingsIndex = currentIndex
+
         preferredHighlightBegin: settingsList.height / 2 - itemheight
         preferredHighlightEnd: settingsList.height / 2
         highlightRangeMode: ListView.ApplyRange
@@ -294,6 +306,20 @@ FocusScope {
 
                 width: ListView.view.width
                 height: itemheight
+
+                MouseArea {
+			anchors.fill: parent
+			onClicked: {
+				if (selected) {
+					playAcceptSound();
+					nextSetting();
+					saveSetting();}
+				else
+					playNavSound();
+					settingsList.focus = true; 
+					settingsList.currentIndex = index;
+			}
+		}
 
                 // Setting name
                 Text {
@@ -408,6 +434,17 @@ FocusScope {
             front_color: colorScheme[theme].accepted.replace(/#/g, "#33");
             back_color: colorScheme[theme].accepted.replace(/#/g, "#33");
             input_button: osdScheme[controlScheme].BTND
+	    TapHandler {
+		onTapped: {
+			if (settingsList.focus != true) {
+				playNavSound();
+				settingsList.focus = true;}
+			else
+				playAcceptSound();
+				nextSetting();					// this doesn't work ... how to call function from ListView?
+				saveSetting();					// this doesn't work ... how to call function from ListView?
+		}
+	     }
         }
 
         Controls {
@@ -419,6 +456,15 @@ FocusScope {
             front_color: colorScheme[theme].cancel.replace(/#/g, "#26");
             back_color: colorScheme[theme].cancel.replace(/#/g, "#26");
             input_button: osdScheme[controlScheme].BTNR
+	    TapHandler {
+		onTapped: {
+			if (settingsList.focus != true) {
+				currentMenuIndex = 1;}
+			else
+				playNavSound();
+                        	pagelist.focus = true;
+		}
+	     }
         }
     }
 

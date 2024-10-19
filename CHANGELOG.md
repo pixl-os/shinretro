@@ -1,5 +1,13 @@
 # Changelog
-## [pixL-master] - 202a-mm-dd - v0.201.x
+## [pixL-master] - 2024-10-19 - v0.201.7
+
+- Add support for multiple screenshots/titlescreens 
+- Modified for touch input control
+    - Settings, Home, Collections, Games pages
+    - Header controls
+    - Footer controls
+    - Filter controls
+    - Navigation Sounds
 
 ## [pixL-master] - 2024-01-14 - v0.201.6
 

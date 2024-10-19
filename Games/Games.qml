@@ -321,27 +321,6 @@ FocusScope {
                                 }
 
                                 Text {
-                                    text: dataText[lang].games_developedIn
-                                    font {
-                                        family: global.fonts.sans
-                                        weight: Font.Light
-                                        italic: true
-                                        pixelSize: vpx(14 * fontScalingFactor)
-                                    }
-                                    color: text_color
-                                }
-
-                                Text {
-                                    text: currentGame.releaseYear
-                                    font {
-                                        family: global.fonts.sans
-                                        weight: Font.Medium
-                                        pixelSize: vpx(14 * fontScalingFactor)
-                                    }
-                                    color: text_color
-                                }
-
-                                Text {
                                     text: dataText[lang].games_for
                                     font {
                                         family: global.fonts.sans
@@ -611,8 +590,8 @@ FocusScope {
 
                 clip: true
 
-                preferredHighlightBegin: height
-                preferredHighlightEnd: height * 0.5
+                preferredHighlightBegin: height * 0
+                preferredHighlightEnd: height * 1
 
                 currentIndex: currentGameIndex
                 onCurrentIndexChanged: currentGameIndex = currentIndex
@@ -657,9 +636,21 @@ FocusScope {
                             visible: status === Loader.Ready
                         }
                     }
+                	MouseArea {
+				anchors.fill: parent
+				onClicked: {
+					if (isCurrentItem) {
+						playPlaySound();
+						saveCurrentState(currentGameIndex);
+						currentGame.launch();}
+					else
+						playNavSound();
+						gv_games.currentIndex = index;
+				}
+			}
                 }
 
-                highlightRangeMode: GridView.StrictlyEnforceRange
+                highlightRangeMode: GridView.NoHighlightRange
                 snapMode: GridView.SnapToRow
                 highlightFollowsCurrentItem: true
 
@@ -704,6 +695,15 @@ FocusScope {
                         if (currentGame !== null) {
                             currentGame.favorite = !currentGame.favorite;
                         }
+                    }
+
+                    // Select button triggers sort by category - not sure what enum matches so just using the INT value for the key
+                    if (event.key == 1048586) {
+                        event.accepted = true;
+                        playBackSound();
+                        sortIndex = (sortIndex + 1) % sortFields.length;
+                        saveSortIndex(sortIndex);
+                        return;
                     }
 
                     if (event.key == Qt.Key_Left) {
@@ -839,6 +839,12 @@ FocusScope {
                     front_color: colorScheme[theme].cancel.replace(/#/g, "#26");
                     back_color: colorScheme[theme].cancel.replace(/#/g, "#26");
                     input_button: osdScheme[controlScheme].BTNR
+		    TapHandler {
+			onTapped: {
+				playBackSound();
+				currentMenuIndex = 2;
+			}
+		     }	
                 }
 
                 Controls {
@@ -846,13 +852,19 @@ FocusScope {
 
                     message: {
                         if (games.state === "filtered")
-                            return "<b>"+dataText[lang].games_filtered+"</b>"
-                        return "<b>"+dataText[lang].games_filter+"</b>"
+                            return dataText[lang].games_filtered 
+                        return dataText[lang].games_filter
                     }
                     text_color: colorScheme[theme].filters
                     front_color: colorScheme[theme].filters.replace(/#/g, "#26");
                     back_color: colorScheme[theme].filters.replace(/#/g, "#26");
                     input_button: osdScheme[controlScheme].BTNU
+		    TapHandler {
+			onTapped: {
+				playBackSound();
+				filter.focus = true;
+			}
+		     }
                 }
 
                 Controls {
@@ -866,15 +878,30 @@ FocusScope {
                     input_button: osdScheme[controlScheme].BTNL
 
                     visible: currentGame !== null
+		    TapHandler {
+			onTapped: {
+				if (currentGame !== null) {
+                            		currentGame.favorite = !currentGame.favorite;
+				}
+			}
+		     }
                 }
 
                 Controls {
                     id: button_Back
                     message: "<b>"+dataText[lang].select_netplay+"</b>"
+
                     text_color: colorScheme[theme].sorters
                     front_color: colorScheme[theme].sorters.replace(/#/g, "#26");
                     back_color: colorScheme[theme].sorters.replace(/#/g, "#26");
                     input_button: osdScheme[controlScheme].BTNSelect
+		    TapHandler {
+			onTapped: {
+				playBackSound();
+				sortIndex = (sortIndex + 1) % sortFields.length;
+				saveSortIndex(sortIndex);
+			}
+		     }
                 }
 
             }
@@ -893,13 +920,13 @@ FocusScope {
                 }
             }
 
-        }
+            FilterLayer {
+                id: filter
+                anchors.fill: parent
+                onCloseRequested: gv_games.focus = true
+            }
 
-		FilterLayer {
-			id: filter
-			anchors.fill: parent
-			onCloseRequested: gv_games.focus = true
-		}		
+        }
     }
 
     function findCurrentGameFromProxy(idx, collection) {
